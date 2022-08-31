@@ -75,11 +75,19 @@ window.addEventListener('scroll', function(event){
 
     h2s.forEach(h2 => {
         if (isInViewport(h2)){
-           h2.style.color = 'red';
+            h2.style.color = "darkred";
+            //const list = h2.classList;
+            //list.toggle('your-active-class');
+        navList.forEach(nav => {
+            if (nav.textContent === h2.textContent){
+                nav.classList.toggle('your-active-class');        
+            } else{
+                nav.classList.remove('your-active-class');
+            }
+            } )
+           
         }
-        else{
-            h2.style.color = 'black';
-        }
+        
     })
 })
      

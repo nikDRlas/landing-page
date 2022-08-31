@@ -34,6 +34,9 @@ h1 {
     margin: 2em 4rem 1em;
   }
 }
+.your-active-class {
+  color: darkred;
+}
 
 h2,
 li {
@@ -85,7 +88,6 @@ ul span {
 }
 
 .navbar__menu li {
-  color: #000;
   font-size: large;
 }
 
@@ -126,9 +128,7 @@ ul span {
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
-.your-active-class h2 {
-  text-decoration: underline;
-}
+
 .landing__container {
   padding: 1em;
   text-align: left;
