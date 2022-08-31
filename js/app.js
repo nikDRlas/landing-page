@@ -23,7 +23,7 @@
  * 
 */
 const navbar = document.querySelector('#navbar__list');
-const sections = document.querySelectorAll(".landing__container h2");
+const sections = document.querySelectorAll(".section[data-nav] h2");
 const sectionen = document.querySelectorAll('.section');
 
 /**
@@ -51,18 +51,60 @@ function isInViewport(element) {
 // build the nav
 sections.forEach(function(section){ 
     const navItem = document.createElement('li');
-    navItem.appendChild(section);
+    navItem.textContent = section.textContent;;
     navbar.appendChild(navItem);
 }); 
 
+submit = document.querySelector('#submit')
+submit.addEventListener('click', function(){
+    alert('Your subscribsion was succesful! :)');
+})
 
 // Add class 'active' to section when near top of viewport
+// VLLT noch while scrolling oder so adden damit immer akutalisiert
 sectionen.forEach(function(elem){
     const list = elem.classList;
     if (isInViewport(elem)){
     list.toggle('your-active-class')
     }; 
 });
+
+window.addEventListener('scroll', function(event){
+    let h2s = this.document.querySelectorAll('.section[data-nav] h2');
+    let navList = this.document.querySelectorAll('#navbar__list li');
+
+    h2s.forEach(h2 => {
+        if (isInViewport(h2)){
+           h2.style.color = 'red';
+        }
+        else{
+            h2.style.color = 'black';
+        }
+    })
+})
+     
+/*window.addEventListener('scroll', function(event){
+// add event on scroll
+  let findMe = document.querySelectorAll('h2');
+  let li = document.querySelectorAll('li');
+// on scroll fetch H2 and li elements, on scroll in order to get new dynamically added with button
+  findMe.forEach(element => {
+//for each h2
+    if (isInViewport(element)) 
+//if in Viewport
+        li.forEach(li => {
+          li.style.textDecoration = 'underline';
+        })
+//set all li styles to none in order to remove before added
+        li.forEach(li => {
+//for each li
+          if (li.innerHTML.trim() === element.innerHTML.trim()) {
+//if li text is same as curent element in viport text 
+            li.style.color = 'red';
+//add style
+          }})
+        })
+    }; */
 
 // Scroll to anchor ID using scrollTO event
 
