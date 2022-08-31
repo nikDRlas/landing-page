@@ -48,6 +48,13 @@ function isInViewport(element) {
     );
 }
 
+document.querySelectorAll('li a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: "smooth"})
+        });
+    });
+
 
 /**
  * End Helper Functions
@@ -103,8 +110,6 @@ window.addEventListener('scroll', function(event){
 })
      
 
-document.forEach()
-// Scroll to anchor ID using scrollTO event
 
 
 /**

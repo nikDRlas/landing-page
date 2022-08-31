@@ -21,6 +21,9 @@ body {
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* Typeography General*/
 h1 {
   font-family: "Fira Sans", sans-serif;
