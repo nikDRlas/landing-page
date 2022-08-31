@@ -23,7 +23,7 @@
  * 
 */
 const navbar = document.querySelector('#navbar__list');
-const sections = document.querySelectorAll(".section[data-nav] h2");
+const sections = document.querySelectorAll(".section h2");
 const sectionen = document.querySelectorAll('.section');
 
 /**
@@ -31,6 +31,12 @@ const sectionen = document.querySelectorAll('.section');
  * Start Helper Functions
  * 
 */
+function createLink(anchorText, anchorLink){
+  let aTag = document.createElement("a");
+  aTag.href = anchorLink;
+  aTag.innerHTML = anchorText;
+  return aTag;
+}
 
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -49,10 +55,13 @@ function isInViewport(element) {
  * 
 */
 // build the nav
-sections.forEach(function(section){ 
+sectionen.forEach(function(section){ 
     const navItem = document.createElement('li');
-    navItem.textContent = section.textContent;;
+    //navItem.textContent = section.textContent;
+    let linkElement = createLink(section.dataset.nav, '#' + section.dataset.nav);
+    navItem.appendChild(linkElement);
     navbar.appendChild(navItem);
+    
 }); 
 
 submit = document.querySelector('#submit')
@@ -69,9 +78,11 @@ sectionen.forEach(function(elem){
     }; 
 });
 
+
+// Set sections as active
 window.addEventListener('scroll', function(event){
     let h2s = this.document.querySelectorAll('.section[data-nav] h2');
-    let navList = this.document.querySelectorAll('#navbar__list li');
+    let navList = this.document.querySelectorAll('#navbar__list a');
 
     h2s.forEach(h2 => {
         if (isInViewport(h2)){
@@ -91,29 +102,8 @@ window.addEventListener('scroll', function(event){
     })
 })
      
-/*window.addEventListener('scroll', function(event){
-// add event on scroll
-  let findMe = document.querySelectorAll('h2');
-  let li = document.querySelectorAll('li');
-// on scroll fetch H2 and li elements, on scroll in order to get new dynamically added with button
-  findMe.forEach(element => {
-//for each h2
-    if (isInViewport(element)) 
-//if in Viewport
-        li.forEach(li => {
-          li.style.textDecoration = 'underline';
-        })
-//set all li styles to none in order to remove before added
-        li.forEach(li => {
-//for each li
-          if (li.innerHTML.trim() === element.innerHTML.trim()) {
-//if li text is same as curent element in viport text 
-            li.style.color = 'red';
-//add style
-          }})
-        })
-    }; */
 
+document.forEach()
 // Scroll to anchor ID using scrollTO event
 
 
@@ -127,6 +117,5 @@ window.addEventListener('scroll', function(event){
 
 // Scroll to section on link click
 
-// Set sections as active
 
 

@@ -37,7 +37,10 @@ h1 {
 .your-active-class {
   color: darkred;
 }
-
+li a {
+  text-decoration: none;
+  color: black;
+}
 h2,
 li {
   border-bottom: 1px solid #cc1;
@@ -267,7 +270,7 @@ input[type="submit"]:hover {
 
 input:required,
 textarea:required {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid darkred;
 }
 input:focus,
 textarea:focus {
