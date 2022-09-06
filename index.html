@@ -15,15 +15,20 @@
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
     <nav class="navbar__menu">
+      <a class="brand-name" href="#landingHeader">LP LTD</a>
       <!-- Navigation starts as empty UL that will be populated with JS -->
       <ul id="navbar__list">
-        <span> LP LTD</span>
       </ul>
+      <div class="mobile-menu">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+      </div>
     </nav>
   </header>
-  <main>
-    <header class="main__hero">
-      <h1>Landing Page </h1>
+  <main id="landingHeader">
+    <header class="main__hero" id="landingHeader">
+      <h1 >Landing Page </h1>
     </header>
     <!-- Each Section has an ID (used for the anchor) and 
     a data attribute that will populate the li node.
@@ -59,7 +64,7 @@
         <p>to our newsletter to get updated!</p>
         <form action="" method="POST" class="form">
           <label for="firstName"><u>First name:</u></label>
-          <input type="text" name="userFirstName" id="firstName" pattern="[A-zÄÖÜäöüß]" placeholder="Denny">
+          <input type="text" name="userFirstName" id="firstName" placeholder="Denny">
           <label for="surName"><u>Sur name:</u></label>
           <input type="text" name="userSurName" id="surName" pattern="[A-zÄÖÜäöüß]" placeholder="Default">
           <label for="mail"><u>Email:</u></label>

@@ -22,15 +22,28 @@
  * Define Global Variables
  * 
 */
+// Getting the UL of the navbar and safe it in variable called 'navbar'
 const navbar = document.querySelector('#navbar__list');
+// Getting the h2 of the different sections of the navbar and safe it in variable called 'sections'
 const sections = document.querySelectorAll(".section h2");
+// Getting the classes called section and safe it in variable called 'sectionen'
 const sectionen = document.querySelectorAll('.section');
+// Getting the div for the burger for the mobile menu  and safe it in variable called 'mobileNavIcon'
+const mobileNavIcon = document.querySelector('.mobile-menu');
+// Getting the UL of the navbar and safe it in variable called 'navbar'
+const navMenu = document.querySelector('#navbar__list');
+// Getting the a tags of the page and safe it in variable called 'navLinks'
+const navLinks = document.querySelectorAll('a');
+//Getting the id of the sumbit and safe it in variable called 'submit'
+const submit = document.querySelector('#submit');
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
+
+// function to create a link with parameters anchorText and anchorLinks. 
 function createLink(anchorText, anchorLink){
   let aTag = document.createElement("a");
   aTag.href = anchorLink;
@@ -38,6 +51,7 @@ function createLink(anchorText, anchorLink){
   return aTag;
 }
 
+// checking if an element is in the viewport by using inhouse function 'getBoundingClientRect()'
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -47,9 +61,10 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
-
+// Scroll smooth to section on link click
 document.querySelectorAll('li a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (anch) {
+        //prevent default "jump" from a element
         anch.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: "smooth"})
         });
@@ -61,32 +76,48 @@ document.querySelectorAll('li a[href^="#"]').forEach(anchor => {
  * Begin Main Functions
  * 
 */
-// build the nav
+// build the nav by generaating list items for each section of the page
 sectionen.forEach(function(section){ 
     const navItem = document.createElement('li');
-    //navItem.textContent = section.textContent;
+    // create a link element with the function above, given sectons dataset.nav as arguments
     let linkElement = createLink(section.dataset.nav, '#' + section.dataset.nav);
+    // give this linkElements a class called link-element
+    linkElement.classList.add('link-element');
+    //append this link elment to the list item which was generated befor in this function
     navItem.appendChild(linkElement);
+    //append the list item to the navbar UL itsself
     navbar.appendChild(navItem);
     
 }); 
 
-submit = document.querySelector('#submit')
+// Build mobile menu and nav
+mobileNavIcon.addEventListener('click', () => {
+    mobileNavIcon.classList.toggle('active');
+    navMenu.classList.toggle('active');
+})
+
+// Remove navbar when user clicks on list item
+document.querySelectorAll('a').forEach(navLink => navLink.addEventListener('click', () => {
+    mobileNavIcon.classList.remove('active');
+    navMenu.classList.remove('active');
+}))
+
+
+// Alert when submit is sucessful
 submit.addEventListener('click', function(){
     alert('Your subscribsion was succesful! :)');
 })
 
-// Add class 'active' to section when near top of viewport
-// VLLT noch while scrolling oder so adden damit immer akutalisiert
+// Add class 'your-active-class' to section when near top of viewport to add style elements via CSS to it
 sectionen.forEach(function(elem){
     const list = elem.classList;
     if (isInViewport(elem)){
     list.toggle('your-active-class')
-    }; 
+    }
 });
 
 
-// Set sections as active
+// Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
 window.addEventListener('scroll', function(event){
     let h2s = this.document.querySelectorAll('.section[data-nav] h2');
     let navList = this.document.querySelectorAll('#navbar__list a');
@@ -96,14 +127,13 @@ window.addEventListener('scroll', function(event){
             h2.style.color = "darkred";
             //const list = h2.classList;
             //list.toggle('your-active-class');
-        navList.forEach(nav => {
+            navList.forEach(nav => {
             if (nav.textContent === h2.textContent){
                 nav.classList.toggle('your-active-class');        
             } else{
                 nav.classList.remove('your-active-class');
             }
-            } )
-           
+            })
         }
         
     })
@@ -112,15 +142,6 @@ window.addEventListener('scroll', function(event){
 
 
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
 
 
 
