@@ -37,7 +37,7 @@ const navLinks = document.querySelectorAll('a');
 //Getting the id of the sumbit and safe it in variable called 'submit'
 const submit = document.querySelector('#submit');
 const reqInput = document.querySelectorAll('.req')
-const anchors = document.querySelectorAll('a');
+
 
 
 /**
@@ -64,14 +64,8 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
-// Scroll smooth to section on link click
-anchors.forEach(anchor => {
-    anchor.addEventListener('click', function (anchor) {
-        //prevent default "jump" from 'a' element
-        anchor.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-        });
-    });
+
+
  
 
 /**
@@ -83,7 +77,7 @@ anchors.forEach(anchor => {
 sectionen.forEach(function(section){ 
     const navItem = document.createElement('li');
     // create a link element with the function above, given sectons dataset.nav as arguments
-    let linkElement = createLink(section.dataset.nav, '#' + section.dataset.nav);
+    let linkElement = createLink(section.dataset.nav,  section.dataset.nav);
     // give this linkElements a class called link-element
     linkElement.classList.add('link-element');
     //append this link elment to the list item which was generated befor in this function
@@ -91,7 +85,25 @@ sectionen.forEach(function(section){
     //append the list item to the navbar UL itsself
     navbar.appendChild(navItem);
     
-}); 
+});
+
+// Select all anchors in the UL of the navbar. Down here because needs to be called after creating dynamic nav
+const anchors = document.querySelectorAll('ul a');
+
+// Scroll smooth to section on link click
+anchors.forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        //prevent default "jump" from 'a' element
+        console.log(anchors);
+        e.preventDefault();
+        console.log(e);
+        sectionen.forEach(section => {
+            if (section.id === anchor.getAttribute('href')){
+                section.scrollIntoView({behavior: "smooth", inline: "nearest"});
+            }
+        })  
+    })
+    });
 
 // Build mobile menu and nav
 mobileNavIcon.addEventListener('click', () => {
@@ -108,7 +120,6 @@ document.querySelectorAll('a').forEach(navLink => navLink.addEventListener('clic
 
 // Alert when submit is sucessful
 submit.addEventListener('click', function(){
-    
     if ( reqInput.values.length != 0){
         alert('Your subscribsion was succesful! :)');
     } else {
