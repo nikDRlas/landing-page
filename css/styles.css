@@ -21,9 +21,6 @@ body {
   color: #fff;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 /* Typeography General*/
 h1 {
   font-family: "Fira Sans", sans-serif;
@@ -38,8 +35,14 @@ h1 {
   }
 }
 .your-active-class {
+  background: darkred;
+  padding: 0.3em;
+  border-radius: 5%;
+}
+.your-active-class h2 {
   color: darkred;
 }
+
 li a {
   text-decoration: none;
   color: black;
@@ -277,6 +280,11 @@ textarea {
   color: #000;
 }
 
+textarea {
+  border-left: 1px solid rgba(0, 0, 0, 0.574);
+  border-right: 1px solid rgba(0, 0, 0, 0.574);
+}
+
 input[type="submit"] {
   background-color: #04aa6d;
   border: none;
@@ -293,6 +301,11 @@ input[type="submit"]:hover {
 input:required,
 textarea:required {
   border-bottom: 1px solid darkred;
+}
+
+textarea:required {
+  border-left: 1px solid darkred;
+  border-right: 1px solid darkred;
 }
 input:focus,
 textarea:focus {
