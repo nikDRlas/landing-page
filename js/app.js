@@ -37,7 +37,7 @@ const navLinks = document.querySelectorAll('a');
 //Getting the id of the sumbit and safe it in variable called 'submit'
 const submit = document.querySelector('#submit');
 const reqInput = document.querySelectorAll('.req')
-const anchors = document.querySelectorAll('a[href^="#"]');
+const anchors = document.querySelectorAll('a');
 
 
 /**
@@ -66,13 +66,13 @@ function isInViewport(element) {
 }
 // Scroll smooth to section on link click
 anchors.forEach(anchor => {
-    anchor.addEventListener('click', anch =>  {
-        //prevent default "jump" from a element
-        anch.preventDefault();
-        document.querySelector(anch.getAttribute('href')).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    anchor.addEventListener('click', function (anchor) {
+        //prevent default "jump" from 'a' element
+        anchor.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         });
     });
-
+ 
 
 /**
  * End Helper Functions
@@ -127,20 +127,22 @@ sectionen.forEach(function(elem){
 
 
 // Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
-window.addEventListener('scroll', function(event){
+window.addEventListener('scroll', function(){
     const navList = this.document.querySelectorAll('#navbar__list a');
     sectionen.forEach(section => {
         if (isInViewport(section)){
-            section.classList.toggle('your-active-class');
+            section.classList.add('your-active-class');
             navList.forEach(nav => {
                 if (nav.textContent === section.id){
-                nav.classList.toggle('your-active-class');        
+                nav.classList.add('your-active-class');        
            } else{
                 nav.classList.remove('your-active-class');
         
             }
             })
-        } else {section.classList.remove('your-active-class');}
+        } else {
+            section.classList.remove('your-active-class');
+        }
 })
 });   
 
