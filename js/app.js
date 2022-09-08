@@ -36,7 +36,7 @@ const navMenu = document.querySelector('#navbar__list');
 const navLinks = document.querySelectorAll('a');
 //Getting the id of the sumbit and safe it in variable called 'submit'
 const submit = document.querySelector('#submit');
-const reqInput = document.querySelectorAll('.req')
+const reqInputs = document.querySelectorAll('.req')
 
 
 
@@ -120,13 +120,15 @@ document.querySelectorAll('a').forEach(navLink => navLink.addEventListener('clic
 
 // Alert when submit is sucessful
 submit.addEventListener('click', function(){
-    if ( reqInput.values.length != 0){
+    reqInputs.forEach(reqInput => {
+            if ( reqInput.valued.length != 0){
         alert('Your subscribsion was succesful! :)');
     } else {
-        alert('Please fill out the required fields!')
+        alert('Please fill out the required fields!');
     }
-    
 })
+});
+
 
 // Add class 'your-active-class' to section when near top of viewport to add style elements via CSS to it
 sectionen.forEach(function(elem){
