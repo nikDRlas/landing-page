@@ -135,18 +135,17 @@ sectionen.forEach(function(elem){
     }
 });
 
+  
+// Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
 window.addEventListener('scroll', function(){
-    console.warn("scroll event");
     const navList = this.document.querySelectorAll('#navbar__list a');
     sectionen.forEach(section => {
         if (isInViewport(section)){
-            console.log("section IS in viewport:", section);
             section.classList.add('your-active-class');
             navList.forEach(nav => {
                 if (nav.textContent === section.id){
                 nav.classList.add('your-active-class');        
            } else{
-                console.log("section NOT in viewport:", section);
                 nav.classList.remove('your-active-class');
         
             }
@@ -156,25 +155,6 @@ window.addEventListener('scroll', function(){
         }
 })
 });   
-// Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
-/*window.addEventListener('scroll', function(){
-    const navList = this.document.querySelectorAll('#navbar__list a');
-    sectionen.forEach(section => {
-        if (isInViewport(section)){
-            section.classList.add('your-active-class');
-            navList.forEach(nav => {
-                if (nav.textContent === section.id){
-                nav.classList.add('your-active-class');        
-           } else{
-                nav.classList.remove('your-active-class');
-        
-            }
-            })
-        } else {
-            section.classList.remove('your-active-class');
-        }
-})
-});   */
 
 
 
