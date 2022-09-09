@@ -119,15 +119,16 @@ document.querySelectorAll('a').forEach(navLink => navLink.addEventListener('clic
 
 
 // Alert when submit is sucessful
-submit.addEventListener('click', function(){
+function valdidateSubmitForm() {  
     reqInputs.forEach(reqInput => {
-            if ( reqInput.valued.length != 0){
-        alert('Your subscribsion was succesful! :)');
-    } else {
+            if ( reqInput.value == ""){
         alert('Please fill out the required fields!');
+    } else {
+        alert('Your subscribsion was succesful! :)');
+        return false;
     }
-})
-});
+    })
+};
 
 
 // Add class 'your-active-class' to section when near top of viewport to add style elements via CSS to it
