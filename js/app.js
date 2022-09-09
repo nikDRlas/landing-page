@@ -54,15 +54,11 @@ function createLink(anchorText, anchorLink){
   return aTag;
 }
 
+
 // checking if an element is in the viewport by using inhouse function 'getBoundingClientRect()'
 function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+  const rect = element.getBoundingClientRect();
+  return rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
 }
 
 
@@ -139,9 +135,29 @@ sectionen.forEach(function(elem){
     }
 });
 
-
-// Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
 window.addEventListener('scroll', function(){
+    console.warn("scroll event");
+    const navList = this.document.querySelectorAll('#navbar__list a');
+    sectionen.forEach(section => {
+        if (isInViewport(section)){
+            console.log("section IS in viewport:", section);
+            section.classList.add('your-active-class');
+            navList.forEach(nav => {
+                if (nav.textContent === section.id){
+                nav.classList.add('your-active-class');        
+           } else{
+                console.log("section NOT in viewport:", section);
+                nav.classList.remove('your-active-class');
+        
+            }
+            })
+        } else {
+            section.classList.remove('your-active-class');
+        }
+})
+});   
+// Set sections as active, highlight heading when in viewport, highlight navitem, depending which section is in VP
+/*window.addEventListener('scroll', function(){
     const navList = this.document.querySelectorAll('#navbar__list a');
     sectionen.forEach(section => {
         if (isInViewport(section)){
@@ -158,7 +174,7 @@ window.addEventListener('scroll', function(){
             section.classList.remove('your-active-class');
         }
 })
-});   
+});   */
 
 
 
