@@ -66,19 +66,19 @@
       <div class="landing__container newsletter">
         <h2>Subscribe</h2>
         <p>to our newsletter to get updated!</p>
-        <form action="" method="POST" class="form">
+        <form action="" method="POST" class="form" enctype="application/x-www-form-urlencoded">
           <label for="firstName"><u>First name:</u></label>
-          <input class="req" type="text" name="userFirstName" id="firstName" placeholder="Denny" onsubmit="return valdidateSubmitForm()" required>
+          <input class="req" type="text" name="userFirstName" id="firstName" placeholder="Denny" required>
           <label for="surName"><u>Sur name:</u></label>
           <input type="text" name="userSurName" id="surName" placeholder="Default">
           <label for="mail"><u>Email:</u></label>
-          <input  class="req" type="email" name="userEmail" id="mail" pattern="[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?" placeholder="example@mail.com" onsubmit="return valdidateSubmitForm()"  required>
+          <input  class="req" type="email" name="userEmail" id="mail" pattern="[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?" placeholder="example@mail.com" required>
           <label for="num"><u>Tel.:</u></label>
           <input type="number" name="userTel" id="num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="US-Number only">
           <label for="sub"><u>Subject</u></label>
           <input type="text" name="subject" id="sub" placeholder="What's your message about?" pattern="[0–20]">
           <label for="mes"><u>Message:</u></label>
-          <textarea class="req" name="message" id="mes" cols="30" rows="10" placeholder="What do you want to tell us?" onsubmit="return valdidateSubmitForm()"  required></textarea>
+          <textarea class="req" name="message" id="mes" cols="30" rows="10" placeholder="What do you want to tell us?" required></textarea>
           <input type="submit" name="submit" id="submit" value="Subscribe">
         </form>
       </div>

@@ -307,6 +307,17 @@ textarea:required {
   border-left: 1px solid darkred;
   border-right: 1px solid darkred;
 }
+
+input:valid {
+  border-bottom: 1px solid #000;
+}
+
+textarea:valid {
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
 input:focus,
 textarea:focus {
   outline: none;

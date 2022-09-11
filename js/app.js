@@ -36,8 +36,12 @@ const navMenu = document.querySelector('#navbar__list');
 const navLinks = document.querySelectorAll('a');
 //Getting the id of the sumbit and safe it in variable called 'submit'
 const submit = document.querySelector('#submit');
-const reqInputs = document.querySelectorAll('.req')
-
+const form = document.querySelector('form');
+const reqInputs = document.querySelectorAll('.req');
+const formFirstName = document.querySelector('#firstName');
+const formSurName = document.querySelector('#surName');
+const formMail = document.querySelector('#mes');
+const formMessage = document.querySelector('#mes');
 
 
 /**
@@ -114,17 +118,25 @@ document.querySelectorAll('a').forEach(navLink => navLink.addEventListener('clic
 }))
 
 
-// Alert when submit is sucessful
-function valdidateSubmitForm() {  
-    reqInputs.forEach(reqInput => {
-            if ( reqInput.value == ""){
-        alert('Please fill out the required fields!');
+// Alert when submit is sucessful  
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if ( reqInputs.value != ""){
+        alert(`Thanks ${formFirstName.value} ${formSurName.value}.Your subscribson was succesfull! We will contact you under ${formMail.value} in case we have question about your message: ${formMessage.value}`);
     } else {
-        alert('Your subscribsion was succesful! :)');
+        alert('Please fill out the required fields!');
         return false;
     }
+    let userData = [
+        formFirstName.value,
+        formSurName.value,
+        formMail.value,
+        formMessage.value,
+    ]
+    console.log(userData);
     })
-};
+
+    
 
 
 // Add class 'your-active-class' to section when near top of viewport to add style elements via CSS to it
@@ -147,7 +159,6 @@ window.addEventListener('scroll', function(){
                 nav.classList.add('your-active-class');        
            } else{
                 nav.classList.remove('your-active-class');
-        
             }
             })
         } else {
